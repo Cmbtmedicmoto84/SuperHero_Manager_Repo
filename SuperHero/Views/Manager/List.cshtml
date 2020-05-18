@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SuperHero.Models.People>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AlterEgo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimarySuperPower)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SecondarySuperPower)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CatchPhrase)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AlterEgo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimarySuperPower)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SecondarySuperPower)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CatchPhrase)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.SuperHeroName">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.SuperHeroName">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.SuperHeroName">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
