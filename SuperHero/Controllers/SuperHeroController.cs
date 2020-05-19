@@ -27,22 +27,23 @@ namespace SuperHeroProj.Controllers
         }
 
         // GET: Manager/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string name)
         {
-            return View();
+            var peopleInDb = context.People.Where(s => s.SuperHeroName == name).FirstOrDefault();
+            return View(peopleInDb);
         }
 
         // GET: Manager/Create
         public ActionResult Create()
         {
-            SuperHero person = new Models.SuperHero();
+            SuperHero person = new SuperHero();
             return View(person);
         }
 
         // POST: Manager/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Id, SuperHeroName, AlterEgo, PrimarySuperPower, SecondarySuperPower, CatchPhrase")] Models.SuperHero person)
+        public ActionResult Create([Bind("Id, SuperHeroName, AlterEgo, PrimarySuperPower, SecondarySuperPower, CatchPhrase")] SuperHero person)
         {
             try
             {
@@ -61,7 +62,7 @@ namespace SuperHeroProj.Controllers
         public ActionResult Edit(int id)
         {
             var peopleInDb = context.People.Where(s => s.Id == id).FirstOrDefault();
-            return View();
+            return View(peopleInDb);
 
             //context is the database
             //people is the table with data
@@ -91,7 +92,7 @@ namespace SuperHeroProj.Controllers
         public ActionResult Delete(int id)
         {
             var peopleInDb = context.People.Where(s => s.Id == id).FirstOrDefault();
-            return View();
+            return View(peopleInDb);
         }
 
         // POST: Manager/Delete/5
