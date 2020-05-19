@@ -21,7 +21,7 @@ namespace SuperHero.Data
         {
         }
 
-        public DbSet<Person> People { get; set; }
+        public DbSet<Models.SuperHero> People { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

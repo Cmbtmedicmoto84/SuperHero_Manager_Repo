@@ -12,18 +12,18 @@ namespace SuperHero.Controllers
 {
     public class PeopleController : Controller
     {
-        ApplicationDbContext context;
+        readonly ApplicationDbContext context;
 
-        public PeopleController()
+        public PeopleController(ApplicationDbContext dbContext)
         {
-            context = new ApplicationDbContext();
+            context = dbContext;
         }
 
         // GET: Manager
         public ActionResult Index()
         {
             var heroes = context.People.ToList();
-            return View(heroes);
+            return View();
         }
 
         // GET: Manager/Details/5
@@ -36,13 +36,13 @@ namespace SuperHero.Controllers
         public ActionResult Create()
         {
             Person person = new Person();
-            return View(person);
+            return View();
         }
 
         // POST: Manager/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Person person)
+        public ActionResult Create([Bind("Id, SuperHeroName, AlterEgo, PrimarySuperPower, SecondarySuperPower, CatchPhrase")] Person person)
         {
             try
             {
@@ -60,7 +60,14 @@ namespace SuperHero.Controllers
         // GET: Manager/Edit/5
         public ActionResult Edit(int id)
         {
+            var peopleInDb = context.People.Where(s => s.Id == id).FirstOrDefault();
             return View();
+
+            //context is the database
+            //people is the table with data
+            //Where is locating a specific record
+            //FirstOrDefault is selecting the first superhero recod in the table
+
         }
 
         // POST: Manager/Edit/5
@@ -83,6 +90,7 @@ namespace SuperHero.Controllers
         // GET: Manager/Delete/5
         public ActionResult Delete(int id)
         {
+            var peopleInDb = context.People.Where(s => s.Id == id).FirstOrDefault();
             return View();
         }
 

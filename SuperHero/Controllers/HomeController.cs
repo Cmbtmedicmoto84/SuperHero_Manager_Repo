@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SuperHero.Models;
 
+
+
 namespace SuperHero.Controllers
 {
     public class HomeController : Controller

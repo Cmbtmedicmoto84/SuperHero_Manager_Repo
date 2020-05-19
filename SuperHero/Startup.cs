@@ -29,7 +29,7 @@ namespace SuperHero
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("Server=(localdb)\\mssqllocaldb;Database=aspnet-SuperHero-E4D57A9F-48BA-4EB1-AB7A-938B3D1FBC2B;Trusted_Connection=True;MultipleActiveResultSets=true")));
+                    Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
