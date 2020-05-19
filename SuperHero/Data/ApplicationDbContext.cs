@@ -25,7 +25,7 @@ namespace SuperHeroProj.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=person.db");
+            
         }
 
 

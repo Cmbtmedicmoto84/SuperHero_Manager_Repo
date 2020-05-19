@@ -23,7 +23,7 @@ namespace SuperHeroProj.Controllers
         public ActionResult Index()
         {
             var heroes = context.People.ToList();
-            return View();
+            return View(heroes);
         }
 
         // GET: Manager/Details/5
