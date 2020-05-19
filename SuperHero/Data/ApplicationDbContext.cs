@@ -4,9 +4,9 @@ using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using SuperHero.Models;
+using SuperHeroProj.Models;
 
-namespace SuperHero.Data
+namespace SuperHeroProj.Data
 {
     public class ApplicationDbContext : IdentityDbContext
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace SuperHero.Migrations
+namespace SuperHeroProj.Migrations
 {
     public partial class init : Migration
     {

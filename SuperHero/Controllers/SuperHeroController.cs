@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using SuperHero.Models;
-using SuperHero.Data;
+using SuperHeroProj.Models;
+using SuperHeroProj.Data;
 
-namespace SuperHero.Controllers
+namespace SuperHeroProj.Controllers
 {
-    public class PeopleController : Controller
+    public class SuperHeroController : Controller
     {
         readonly ApplicationDbContext context;
 
-        public PeopleController(ApplicationDbContext dbContext)
+        public SuperHeroController(ApplicationDbContext dbContext)
         {
             context = dbContext;
         }
@@ -35,14 +35,14 @@ namespace SuperHero.Controllers
         // GET: Manager/Create
         public ActionResult Create()
         {
-            Person person = new Person();
-            return View();
+            SuperHero person = new Models.SuperHero();
+            return View(person);
         }
 
         // POST: Manager/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind("Id, SuperHeroName, AlterEgo, PrimarySuperPower, SecondarySuperPower, CatchPhrase")] Person person)
+        public ActionResult Create([Bind("Id, SuperHeroName, AlterEgo, PrimarySuperPower, SecondarySuperPower, CatchPhrase")] Models.SuperHero person)
         {
             try
             {

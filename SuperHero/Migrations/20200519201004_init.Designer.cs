@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SuperHero.Data;
+using SuperHeroProj.Data;
 
-namespace SuperHero.Migrations
+namespace SuperHeroProj.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200519160433_init")]
+    [Migration("20200519201004_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -221,7 +221,7 @@ namespace SuperHero.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SuperHero.Models.Person", b =>
+            modelBuilder.Entity("SuperHeroProj.Models.SuperHero", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

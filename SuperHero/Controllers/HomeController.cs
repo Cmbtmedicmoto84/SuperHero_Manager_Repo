@@ -5,11 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SuperHero.Models;
+using SuperHeroProj.Models;
 
 
 
-namespace SuperHero.Controllers
+namespace SuperHeroProj.Controllers
 {
     public class HomeController : Controller
     {
