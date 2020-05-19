@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SuperHero.Data;
 
-namespace SuperHero.Data.Migrations
+namespace SuperHero.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot
@@ -219,24 +219,29 @@ namespace SuperHero.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("SuperHero.Models.People", b =>
+            modelBuilder.Entity("SuperHero.Models.Person", b =>
                 {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("AlterEgo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CatchPhrase")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PrimarySuperPower")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SecondarySuperPower")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SuperHeroName")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AliasFirstName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("AliasLastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HomePlanet")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SuperPower")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("SuperHeroName");
+                    b.HasKey("Id");
 
                     b.ToTable("People");
                 });

@@ -29,11 +29,13 @@ namespace SuperHero
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("DefaultConnection")));
+                    Configuration.GetConnectionString("Server=(localdb)\\mssqllocaldb;Database=aspnet-SuperHero-E4D57A9F-48BA-4EB1-AB7A-938B3D1FBC2B;Trusted_Connection=True;MultipleActiveResultSets=true")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

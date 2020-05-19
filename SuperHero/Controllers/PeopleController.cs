@@ -4,15 +4,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using SuperHero.Models;
+using SuperHero.Data;
 
 namespace SuperHero.Controllers
 {
-    public class ManagerController : Controller
+    public class PeopleController : Controller
     {
+        ApplicationDbContext context;
+
+        public PeopleController()
+        {
+            context = new ApplicationDbContext();
+        }
+
         // GET: Manager
         public ActionResult Index()
         {
-            return View();
+            var heroes = context.People.ToList();
+            return View(heroes);
         }
 
         // GET: Manager/Details/5
@@ -24,19 +35,21 @@ namespace SuperHero.Controllers
         // GET: Manager/Create
         public ActionResult Create()
         {
-            return View();
+            Person person = new Person();
+            return View(person);
         }
 
         // POST: Manager/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(Person person)
         {
             try
             {
                 // TODO: Add insert logic here
-
-                return RedirectToAction(nameof(Index));
+                context.People.Add(person);
+                context.SaveChanges();
+                return RedirectToAction("Index");
             }
             catch
             {
