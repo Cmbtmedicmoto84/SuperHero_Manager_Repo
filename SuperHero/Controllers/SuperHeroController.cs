@@ -62,7 +62,14 @@ namespace SuperHeroProj.Controllers
         public ActionResult Edit(int id)
         {
             var peopleInDb = context.People.Where(s => s.Id == id).FirstOrDefault();
-            return View(peopleInDb);
+
+            SuperHero person = null;
+            foreach (SuperHero p in context.People)
+            {
+                person = p;
+            }
+
+            return View(person);
 
             //context is the database
             //people is the table with data
@@ -74,18 +81,23 @@ namespace SuperHeroProj.Controllers
         // POST: Manager/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public IActionResult Edit([Bind("SuperHeroName, AlterEgo, PrimarySuperPower, SecondarySuperPower, CatchPhrase")] SuperHero person)
         {
+            SuperHero peopleInDb = null;
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
+                peopleInDb = context.People.Where(p => p.Id == person.Id).Single();
+                context.People.Update(peopleInDb);
+                context.SaveChanges();
+                return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
+            
+
         }
 
         // GET: Manager/Delete/5
